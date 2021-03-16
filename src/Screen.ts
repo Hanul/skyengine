@@ -1,6 +1,8 @@
 import { DomNode, el } from "@hanul/skynode";
 import * as PIXI from "pixi.js";
 import Camera from "./Camera";
+import Delay from "./delay/Delay";
+import Interval from "./delay/Interval";
 import GameNode from "./GameNode";
 
 export interface ScreenOptions {
@@ -27,16 +29,8 @@ export default class Screen extends DomNode<HTMLDivElement> {
     public width = 0;
     public height = 0;
 
-    private static delays: (typeof Screen.Delay.prototype)[] = [];
-    private static intervals: (typeof Screen.Interval.prototype)[] = [];
-
-    public static Delay = class {
-        constructor() { Screen.delays.push(this); }
-    }
-
-    public static Interval = class {
-        constructor() { Screen.intervals.push(this); }
-    }
+    public delays: Delay[] = [];
+    public intervals: Interval[] = [];
 
     constructor(options: ScreenOptions) {
         super(document.createElement("div"));
@@ -67,6 +61,8 @@ export default class Screen extends DomNode<HTMLDivElement> {
 
     private step(deltaTime: number) {
         this.root.step(deltaTime);
+        for (const delay of this.delays) { delay.step(deltaTime); }
+        for (const interval of this.intervals) { interval.step(deltaTime); }
 
         // root to center of screen
         this.root.x = this.width / 2 - this.camera.x;
