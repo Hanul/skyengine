@@ -1,11 +1,11 @@
 import { SkyNode } from "@hanul/skynode";
 import * as PIXI from "pixi.js";
-import Figure from "./figure/Figure";
+import Area from "./area/Area";
 
 export interface GameNodeOptions {
     x?: number;
     y?: number;
-    colliders?: Figure[];
+    colliders?: Area[];
 }
 
 export default class GameNode extends SkyNode {

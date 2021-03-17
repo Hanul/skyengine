@@ -1,0 +1,1 @@
+{"version":3,"file":"Area.d.ts","sourceRoot":"","sources":["../../src/area/Area.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,WAAW;IACxB,CAAC,CAAC,EAAE,MAAM,CAAC;IACX,CAAC,CAAC,EAAE,MAAM,CAAC;CACd;AAED,MAAM,CAAC,OAAO,CAAC,QAAQ,OAAO,IAAI;gBAElB,OAAO,EAAE,WAAW;CACnC"}
