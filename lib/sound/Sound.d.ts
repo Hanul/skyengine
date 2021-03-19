@@ -5,8 +5,10 @@ export default class Sound extends EventContainer {
     private static readonly OGG_PLAYABLE;
     private static audioContext;
     private static bufferCache;
+    private static loadBufferWaiter;
     private static loadBuffer;
     private src;
+    private playWaiter;
     private buffer;
     private gainNode;
     private source;
@@ -14,16 +16,14 @@ export default class Sound extends EventContainer {
     private fadeInSeconds;
     private startedAt;
     private pausedAt;
-    private loaded;
     private playing;
-    private delayed;
     constructor(files: {
         ogg?: string;
         mp3?: string;
         wav?: string;
     }, loop?: boolean | undefined, volume?: number);
     private ready;
-    play(at?: number): Sound;
+    play(at?: number): Promise<Sound>;
     pause(): void;
     setVolume(volume: number): void;
     delete(): void;

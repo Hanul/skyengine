@@ -1,3 +1,4 @@
+import Waiter from "@hanul/waiter";
 import EventContainer from "eventcontainer";
 
 export default class Sound extends EventContainer {
@@ -7,11 +8,15 @@ export default class Sound extends EventContainer {
     private static audioContext: AudioContext | undefined;
     private static bufferCache: { [src: string]: AudioBuffer } = {};
 
+    private static loadBufferWaiter = new Waiter<AudioBuffer>();
     private static async loadBuffer(src: string): Promise<AudioBuffer> {
-        return new Promise<AudioBuffer>((resolve, reject) => {
-            if (Sound.bufferCache[src] !== undefined) {
-                resolve(Sound.bufferCache[src]);
-            } else {
+        if (Sound.bufferCache[src] !== undefined) {
+            return Sound.bufferCache[src];
+        } else if (Sound.loadBufferWaiter.waiting === true) {
+            return await Sound.loadBufferWaiter.cheer();
+        } else {
+            return new Promise<AudioBuffer>((resolve, reject) => {
+                Sound.loadBufferWaiter.wait();
                 const request = new XMLHttpRequest();
                 request.open("GET", src, true);
                 request.responseType = "arraybuffer";
@@ -19,27 +24,33 @@ export default class Sound extends EventContainer {
                     if (this.status >= 200 && this.status < 300) {
                         Sound.audioContext?.decodeAudioData(request.response, (buffer) => {
                             Sound.bufferCache[src] = buffer;
+                            Sound.loadBufferWaiter.done(buffer);
                             resolve(buffer);
                         });
                     } else {
-                        reject({
+                        const reason = {
                             status: this.status,
                             statusText: request.statusText,
-                        });
+                        };
+                        Sound.loadBufferWaiter.error(reason);
+                        reject(reason);
                     }
                 };
                 request.onerror = function () {
-                    reject({
+                    const reason = {
                         status: this.status,
-                        statusText: request.statusText
-                    });
+                        statusText: request.statusText,
+                    };
+                    Sound.loadBufferWaiter.error(reason);
+                    reject(reason);
                 };
                 request.send();
-            }
-        });
+            });
+        }
     }
 
     private src: string | undefined;
+    private playWaiter = new Waiter();
 
     private buffer: AudioBuffer | undefined;
     private gainNode: GainNode | undefined;
@@ -49,11 +60,7 @@ export default class Sound extends EventContainer {
     private fadeInSeconds: number | undefined;
     private startedAt = 0;
     private pausedAt = 0;
-
-    private loaded = false;
     private playing = false;
-
-    private delayed: (() => void) | undefined;
 
     constructor(files: {
         ogg?: string,
@@ -61,11 +68,9 @@ export default class Sound extends EventContainer {
         wav?: string,
     }, private loop?: boolean, private volume = 0.8) {
         super();
-
         if (Sound.audioContext === undefined) {
             Sound.audioContext = new AudioContext();
         }
-
         if (files.ogg !== undefined && Sound.OGG_PLAYABLE === true) {
             this.src = files.ogg;
         } else if (files.mp3 !== undefined) {
@@ -73,12 +78,12 @@ export default class Sound extends EventContainer {
         } else {
             this.src = files.wav;
         }
-
         this.ready();
     }
 
     private async ready() {
         if (this.src !== undefined && Sound.audioContext !== undefined) {
+            this.playWaiter.wait();
 
             this.buffer = await Sound.loadBuffer(this.src);
             this.gainNode = Sound.audioContext.createGain();
@@ -93,69 +98,52 @@ export default class Sound extends EventContainer {
                 this.fadeInSeconds = undefined;
             }
 
-            if (this.delayed !== undefined) {
-                this.delayed();
-            }
+            this.playWaiter.done();
             this.fireEvent("load");
-            this.loaded = true;
         }
     }
 
-    public play(at?: number): Sound {
+    public async play(at?: number): Promise<Sound> {
         if (this.playing !== true) {
-
+            this.playing = true;
             if (at !== undefined) {
                 this.pausedAt = at;
             }
+            if (this.playWaiter.waiting === true) {
+                await this.playWaiter.cheer();
+            }
+            if (
+                Sound.audioContext !== undefined &&
+                this.buffer !== undefined &&
+                this.gainNode !== undefined
+            ) {
+                this.source = Sound.audioContext.createBufferSource();
+                this.source.buffer = this.buffer;
+                this.source.connect(this.gainNode);
+                this.source.loop = this.loop === true;
 
-            this.delayed = () => {
-                if (
-                    Sound.audioContext !== undefined &&
-                    this.buffer !== undefined &&
-                    this.gainNode !== undefined &&
-                    this.playing !== true
-                ) {
-                    this.source = Sound.audioContext.createBufferSource();
-                    this.source.buffer = this.buffer;
-                    this.source.connect(this.gainNode);
-                    this.source.loop = this.loop === true;
+                this.startedAt = Date.now() / 1000 - this.pausedAt;
+                this.source.start(0, this.pausedAt % this.buffer.duration);
 
-                    this.startedAt = Date.now() / 1000 - this.pausedAt;
-                    this.source.start(0, this.pausedAt % this.buffer.duration);
-
-                    this.delayed = undefined;
-
-                    if (this.loop !== true) {
-                        this.source.onended = () => {
-                            this.stop();
-                            this.fireEvent("end");
-                        };
-                    }
-
-                    this.playing = true;
+                if (this.loop !== true) {
+                    this.source.onended = () => {
+                        this.fireEvent("end");
+                        this.delete();
+                    };
                 }
-            };
-
-            if (this.buffer === undefined) {
-                this.ready();
-            } else {
-                this.delayed();
             }
         }
         return this;
     }
 
     public pause(): void {
-
+        this.playing = false;
         if (this.source !== undefined) {
             this.source.stop(0);
             this.source.disconnect();
             this.source = undefined;
             this.pausedAt = Date.now() / 1000 - this.startedAt;
         }
-
-        this.delayed = undefined;
-        this.playing = false;
     }
 
     public setVolume(volume: number): void {
@@ -181,7 +169,6 @@ export default class Sound extends EventContainer {
         }
 
         this.buffer = undefined;
-        this.delayed = undefined;
         this.playing = false;
     }
 }

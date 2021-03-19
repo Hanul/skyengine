@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@hanul/skynode": "^0.0.1",
+        "@hanul/waiter": "^0.0.1",
         "eventcontainer": "^0.0.2",
         "pixi.js": "^5.3.7",
         "skyutil": "^0.0.1",
