@@ -1,1 +1,1 @@
-{"version":3,"file":"BGM.d.ts","sourceRoot":"","sources":["../../src/sound/BGM.ts"],"names":[],"mappings":""}
+{"version":3,"file":"BGM.d.ts","sourceRoot":"","sources":["../../src/sound/BGM.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,SAAS,CAAC;AAE5B,MAAM,CAAC,OAAO,OAAO,GAAI,SAAQ,KAAK;IAElC,OAAO,CAAC,uBAAuB,CAE7B;gBAEU,KAAK,EAAE;QAAE,GAAG,CAAC,EAAE,MAAM,CAAC;QAAC,GAAG,CAAC,EAAE,MAAM,CAAA;KAAE,EAAE,MAAM,SAAM;IAKxD,MAAM,IAAI,IAAI;CAIxB"}
