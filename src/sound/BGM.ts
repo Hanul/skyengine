@@ -11,8 +11,8 @@ export default class BGM extends Sound {
         document.addEventListener("visibilitychange", this.visibilitychangeHandler);
     }
 
-    public delete(): void {
-        super.delete();
+    public stop(): void {
+        super.stop();
         document.removeEventListener("visibilitychange", this.visibilitychangeHandler);
     }
 }

@@ -5,6 +5,6 @@ export default class BGM extends Sound {
         ogg?: string;
         mp3?: string;
     }, volume?: number);
-    delete(): void;
+    stop(): void;
 }
 //# sourceMappingURL=BGM.d.ts.map

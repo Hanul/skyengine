@@ -1,31 +1,30 @@
-import EventContainer from "eventcontainer";
-export default class Sound extends EventContainer {
+export default class Sound {
     private loop?;
     private volume;
     private static readonly OGG_PLAYABLE;
     private static audioContext;
-    private static bufferCache;
-    private static loadBufferWaiter;
+    private static buffers;
+    private static loadBufferWaiters;
+    private static loadAudioContext;
     private static loadBuffer;
     private src;
-    private playWaiter;
-    private buffer;
+    private playing;
     private gainNode;
     private source;
     private duration;
     private fadeInSeconds;
     private startedAt;
     private pausedAt;
-    private playing;
     constructor(files: {
         ogg?: string;
         mp3?: string;
         wav?: string;
     }, loop?: boolean | undefined, volume?: number);
     private ready;
-    play(at?: number): Promise<Sound>;
+    private playBuffer;
+    play(): void;
     pause(): void;
+    stop(): void;
     setVolume(volume: number): void;
-    delete(): void;
 }
 //# sourceMappingURL=Sound.d.ts.map
