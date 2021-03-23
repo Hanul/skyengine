@@ -147,7 +147,7 @@ export default class Sound {
         }
     }
 
-    public play(): void {
+    public play(): this {
         if (this.playing !== true) {
             this.playing = true;
 
@@ -170,6 +170,7 @@ export default class Sound {
 
             this.playBuffer();
         }
+        return this;
     }
 
     public pause(): void {

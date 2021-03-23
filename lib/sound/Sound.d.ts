@@ -22,7 +22,7 @@ export default class Sound {
     }, loop?: boolean | undefined, volume?: number);
     private ready;
     private playBuffer;
-    play(): void;
+    play(): this;
     pause(): void;
     stop(): void;
     setVolume(volume: number): void;

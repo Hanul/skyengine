@@ -1,10 +1,13 @@
-import { SkyNode } from "@hanul/skynode";
+import { DomNode, SkyNode } from "@hanul/skynode";
 import * as PIXI from "pixi.js";
 import Area from "./area/Area";
 export interface GameNodeOptions {
     x?: number;
     y?: number;
+    speedX?: number;
+    sppedY?: number;
     colliders?: Area[];
+    dom?: DomNode;
 }
 export default class GameNode extends SkyNode {
     parent: GameNode | undefined;
