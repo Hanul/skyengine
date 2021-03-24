@@ -15,6 +15,7 @@ export default class GameNode extends SkyNode {
 
     public parent: GameNode | undefined;
     protected children: GameNode[] = [];
+    public colliders: Area[] = [];
     public pixiContainer: PIXI.Container = new PIXI.Container();
 
     private speedX = 0; private speedY = 0;
