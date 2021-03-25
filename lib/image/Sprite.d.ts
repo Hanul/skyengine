@@ -7,5 +7,6 @@ export interface SpriteOptions extends GameNodeOptions {
     frameCount?: number;
 }
 export default class Sprite extends GameNode {
+    constructor(options: SpriteOptions);
 }
 //# sourceMappingURL=Sprite.d.ts.map

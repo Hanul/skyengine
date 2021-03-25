@@ -1,3 +1,4 @@
+import { BodyNode } from "@hanul/skynode";
 import Letterbox from "./Letterbox";
 import Screen from "./Screen";
 
@@ -48,6 +49,8 @@ export default class Fullscreen extends Screen {
 
         window.addEventListener("resize", this.windowResizeHandler);
         this.windowResizeHandler();
+
+        BodyNode.append(this);
     }
 
     private windowResizeHandler = () => {

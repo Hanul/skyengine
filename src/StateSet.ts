@@ -6,4 +6,19 @@ export interface StateSetOptions extends GameNodeOptions {
 }
 
 export default class StateSet extends GameNode {
+
+    private currentState: string;
+
+    constructor(options: StateSetOptions) {
+        super(options);
+        this.currentState = options.baseState;
+    }
+
+    public get state(): string {
+        return this.currentState;
+    }
+
+    public set state(state: string) {
+        this.currentState = state;
+    }
 }

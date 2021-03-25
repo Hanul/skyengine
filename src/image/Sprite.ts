@@ -10,4 +10,7 @@ export interface SpriteOptions extends GameNodeOptions {
 
 export default class Sprite extends GameNode {
 
+    constructor(options: SpriteOptions) {
+        super(options);
+    }
 }

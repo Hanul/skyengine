@@ -12,6 +12,7 @@ export interface GameNodeOptions {
 export default class GameNode extends SkyNode {
     parent: GameNode | undefined;
     protected children: GameNode[];
+    colliders: Area[];
     pixiContainer: PIXI.Container;
     private speedX;
     private speedY;
@@ -26,13 +27,41 @@ export default class GameNode extends SkyNode {
     private moveYEndHandler;
     constructor(options?: GameNodeOptions);
     set x(x: number);
+    get x(): number;
     set y(y: number);
+    get y(): number;
+    set scaleX(scaleX: number);
+    get scaleX(): number;
+    set scaleY(scaleY: number);
+    get scaleY(): number;
+    moveLeft(options: {
+        speed: number;
+        accel?: number;
+        maxSpeed?: number;
+        toX?: number;
+    }, moveEndHandler?: () => void): void;
+    stopLeft(accel?: number): void;
+    moveRight(options: {
+        speed: number;
+        accel?: number;
+        maxSpeed?: number;
+        toX?: number;
+    }, moveEndHandler?: () => void): void;
+    stopRight(accel?: number): void;
+    moveUp(options: {
+        speed: number;
+        accel?: number;
+        maxSpeed?: number;
+        toY?: number;
+    }, moveEndHandler?: () => void): void;
+    stopUp(accel?: number): void;
     moveDown(options: {
         speed: number;
         accel?: number;
         maxSpeed?: number;
         toY?: number;
     }, moveEndHandler?: () => void): void;
+    stopDown(accel?: number): void;
     step(deltaTime: number): void;
     appendTo(node: GameNode, index?: number): this;
     exceptFromParent(): void;

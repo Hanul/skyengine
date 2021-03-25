@@ -1,1 +1,1 @@
-{"version":3,"file":"Sprite.js","sourceRoot":"","sources":["../../src/image/Sprite.ts"],"names":[],"mappings":";;;;;AAAA,2DAAwD;AAUxD,MAAqB,MAAO,SAAQ,kBAAQ;CAE3C;AAFD,yBAEC"}
+{"version":3,"file":"Sprite.js","sourceRoot":"","sources":["../../src/image/Sprite.ts"],"names":[],"mappings":";;;;;AAAA,2DAAwD;AAUxD,MAAqB,MAAO,SAAQ,kBAAQ;IAExC,YAAY,OAAsB;QAC9B,KAAK,CAAC,OAAO,CAAC,CAAC;IACnB,CAAC;CACJ;AALD,yBAKC"}

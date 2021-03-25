@@ -1,8 +1,12 @@
-import { DomNode } from "@hanul/skynode";
+import { BodyNode, DomNode } from "@hanul/skynode";
+
+export enum JoystickType {
+    LEFT_AND_RIGHT,
+}
 
 export default class Joystick extends DomNode<HTMLDivElement> {
 
-    constructor() {
+    constructor(type: JoystickType) {
         super(document.createElement("div"));
         this.style({
             position: "fixed",
@@ -10,5 +14,6 @@ export default class Joystick extends DomNode<HTMLDivElement> {
             bottom: 20,
             zIndex: 9999999,
         });
+        BodyNode.append(this);
     }
 }

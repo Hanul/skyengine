@@ -32,12 +32,91 @@ export default class GameNode extends SkyNode {
         if (options?.y !== undefined) { this.y = options.y; }
     }
 
-    public set x(x: number) {
-        this.pixiContainer.x = x;
+    public set x(x: number) { this.pixiContainer.x = x; }
+    public get x(): number { return this.pixiContainer.x; }
+    public set y(y: number) { this.pixiContainer.y = y; }
+    public get y(): number { return this.pixiContainer.y; }
+    public set scaleX(scaleX: number) { this.pixiContainer.scale.x = scaleX; }
+    public get scaleX(): number { return this.pixiContainer.scale.x; }
+    public set scaleY(scaleY: number) { this.pixiContainer.scale.y = scaleY; }
+    public get scaleY(): number { return this.pixiContainer.scale.y; }
+
+    public moveLeft(options: {
+        speed: number,
+        accel?: number,
+        maxSpeed?: number,
+        toX?: number,
+    }, moveEndHandler?: () => void): void {
+        this.speedX = -options.speed;
+        this.accelX = options.accel === undefined ? 0 : -options.accel;
+        this.minSpeedX = options.maxSpeed === undefined ? undefined : -options.maxSpeed;
+        this.maxSpeedX = 0;
+        this.toX = options.toX;
+        if (moveEndHandler !== undefined) {
+            this.on("moveEndX", moveEndHandler);
+        }
     }
 
-    public set y(y: number) {
-        this.pixiContainer.y = y;
+    public stopLeft(accel?: number): void {
+        if (accel !== undefined) {
+            this.accelX = accel;
+            this.maxSpeedX = 0;
+        } else if (this.speedX < 0) {
+            if (this.accelX < 0) { this.accelX = 0; }
+            this.speedX = 0;
+        }
+    }
+
+    public moveRight(options: {
+        speed: number,
+        accel?: number,
+        maxSpeed?: number,
+        toX?: number,
+    }, moveEndHandler?: () => void): void {
+        this.speedX = options.speed;
+        this.accelX = options.accel === undefined ? 0 : options.accel;
+        this.minSpeedX = 0;
+        this.maxSpeedX = options.maxSpeed;
+        this.toX = options.toX;
+        if (moveEndHandler !== undefined) {
+            this.on("moveEndX", moveEndHandler);
+        }
+    }
+
+    public stopRight(accel?: number): void {
+        if (accel !== undefined) {
+            this.accelX = -accel;
+            this.minSpeedX = 0;
+        } else if (this.speedX > 0) {
+            if (this.accelX > 0) { this.accelX = 0; }
+            this.speedX = 0;
+        }
+    }
+
+    public moveUp(options: {
+        speed: number,
+        accel?: number,
+        maxSpeed?: number,
+        toY?: number,
+    }, moveEndHandler?: () => void): void {
+        this.speedY = -options.speed;
+        this.accelY = options.accel === undefined ? 0 : -options.accel;
+        this.minSpeedY = options.maxSpeed === undefined ? undefined : -options.maxSpeed;
+        this.maxSpeedY = 0;
+        this.toY = options.toY;
+        if (moveEndHandler !== undefined) {
+            this.on("moveEndY", moveEndHandler);
+        }
+    }
+
+    public stopUp(accel?: number): void {
+        if (accel !== undefined) {
+            this.accelY = accel;
+            this.maxSpeedY = 0;
+        } else if (this.speedY < 0) {
+            if (this.accelY < 0) { this.accelY = 0; }
+            this.speedY = 0;
+        }
     }
 
     public moveDown(options: {
@@ -53,6 +132,16 @@ export default class GameNode extends SkyNode {
         this.toY = options.toY;
         if (moveEndHandler !== undefined) {
             this.on("moveEndY", moveEndHandler);
+        }
+    }
+
+    public stopDown(accel?: number): void {
+        if (accel !== undefined) {
+            this.accelY = -accel;
+            this.minSpeedY = 0;
+        } else if (this.speedY > 0) {
+            if (this.accelY > 0) { this.accelY = 0; }
+            this.speedY = 0;
         }
     }
 

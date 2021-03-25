@@ -5,7 +5,7 @@ export default class Letterbox extends DomNode<HTMLDivElement> {
     constructor() {
         super(document.createElement("div"));
         this.style({
-            position: "fixed",
+            position: "absolute",
             zIndex: 9999998,
             backgroundColor: "#000",
         });
