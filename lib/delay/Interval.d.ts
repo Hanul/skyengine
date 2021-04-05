@@ -1,11 +1,11 @@
-import Screen from "../Screen";
+import GameNode from "../GameNode";
 export default class Interval {
-    private screen;
+    private node;
     private ms;
     private callback;
     private after;
     count: number;
-    constructor(screen: Screen, ms: number, callback: (interval: Interval) => boolean);
+    constructor(node: GameNode, ms: number, callback: () => boolean | void);
     resume(): void;
     pause(): void;
     delete(): void;

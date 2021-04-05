@@ -1,4 +1,5 @@
 import SkyUtil from "skyutil";
+import GameNode from "../GameNode";
 import Screen from "../Screen";
 
 export default class Interval {
@@ -7,9 +8,9 @@ export default class Interval {
     public count = 0;
 
     constructor(
-        private screen: Screen,
+        private node: GameNode,
         private ms: number,
-        private callback: (interval: Interval) => boolean,
+        private callback: () => boolean | void,
     ) {
         this.resume();
     }

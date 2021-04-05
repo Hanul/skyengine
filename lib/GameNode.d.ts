@@ -14,8 +14,8 @@ export default class GameNode extends SkyNode {
     protected children: GameNode[];
     colliders: Area[];
     pixiContainer: PIXI.Container;
-    private speedX;
-    private speedY;
+    speedX: number;
+    speedY: number;
     private accelX;
     private accelY;
     private minSpeedX;
@@ -63,6 +63,9 @@ export default class GameNode extends SkyNode {
     }, moveEndHandler?: () => void): void;
     stopDown(accel?: number): void;
     step(deltaTime: number): void;
+    onMeet(TargetType: {
+        new (): any;
+    }, callback: () => void): void;
     appendTo(node: GameNode, index?: number): this;
     exceptFromParent(): void;
     delete(): void;

@@ -18,7 +18,7 @@ export default class GameNode extends SkyNode {
     public colliders: Area[] = [];
     public pixiContainer: PIXI.Container = new PIXI.Container();
 
-    private speedX = 0; private speedY = 0;
+    public speedX = 0; public speedY = 0;
     private accelX = 0; private accelY = 0;
     private minSpeedX: number | undefined; private minSpeedY: number | undefined;
     private maxSpeedX: number | undefined; private maxSpeedY: number | undefined;
@@ -146,6 +146,9 @@ export default class GameNode extends SkyNode {
     }
 
     public step(deltaTime: number) {
+    }
+
+    public onMeet(TargetType: { new(): any }, callback: () => void) {
     }
 
     public appendTo(node: GameNode, index?: number): this {

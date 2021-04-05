@@ -7,5 +7,6 @@ export { default as Background } from "./image/Background";
 export { default as Rect } from "./area/Rect";
 export { default as Sound } from "./sound/Sound";
 export { default as BGM } from "./sound/BGM";
+export { default as Interval } from "./delay/Interval";
 export { default as Joystick, JoystickType } from "./Joystick";
 //# sourceMappingURL=index.d.ts.map

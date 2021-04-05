@@ -1,7 +1,5 @@
 import { DomNode } from "@hanul/skynode";
 import * as PIXI from "pixi.js";
-import Delay from "./delay/Delay";
-import Interval from "./delay/Interval";
 import GameNode from "./GameNode";
 export interface ScreenOptions {
     fps?: number;
@@ -21,8 +19,6 @@ export default class Screen extends DomNode<HTMLDivElement> {
     private camera;
     width: number;
     height: number;
-    delays: Delay[];
-    intervals: Interval[];
     constructor(options: ScreenOptions);
     resize(width: number, height: number, ratio?: number): void;
     private step;
