@@ -1,6 +1,9 @@
 import { DomNode, SkyNode } from "@hanul/skynode";
 import * as PIXI from "pixi.js";
 import Area from "./area/Area";
+import Delay from "./delay/Delay";
+import Interval from "./delay/Interval";
+import Screen from "./Screen";
 
 export interface GameNodeOptions {
     x?: number;
@@ -15,14 +18,23 @@ export default class GameNode extends SkyNode {
 
     public parent: GameNode | undefined;
     protected children: GameNode[] = [];
-    public colliders: Area[] = [];
+    private colliders: Area[] = [];
     public pixiContainer: PIXI.Container = new PIXI.Container();
 
+    public delays: Delay[] = [];
+    public intervals: Interval[] = [];
+
+    public x = 0; public y = 0;
+    public scaleX = 0; public scaleY = 0;
     public speedX = 0; public speedY = 0;
     private accelX = 0; private accelY = 0;
+
     private minSpeedX: number | undefined; private minSpeedY: number | undefined;
     private maxSpeedX: number | undefined; private maxSpeedY: number | undefined;
     private toX: number | undefined; private toY: number | undefined;
+
+    public _worldX = 0; public _worldY = 0;
+    public _worldScaleX = 0; public _worldScaleY = 0;
 
     private moveYEndHandler: (() => void) | undefined;
 
@@ -32,6 +44,8 @@ export default class GameNode extends SkyNode {
         if (options?.y !== undefined) { this.y = options.y; }
     }
 
+    /*
+    // 이하 내용은 step에서
     public set x(x: number) { this.pixiContainer.x = x; }
     public get x(): number { return this.pixiContainer.x; }
     public set y(y: number) { this.pixiContainer.y = y; }
@@ -39,7 +53,7 @@ export default class GameNode extends SkyNode {
     public set scaleX(scaleX: number) { this.pixiContainer.scale.x = scaleX; }
     public get scaleX(): number { return this.pixiContainer.scale.x; }
     public set scaleY(scaleY: number) { this.pixiContainer.scale.y = scaleY; }
-    public get scaleY(): number { return this.pixiContainer.scale.y; }
+    public get scaleY(): number { return this.pixiContainer.scale.y; }*/
 
     public moveLeft(options: {
         speed: number,
@@ -145,10 +159,13 @@ export default class GameNode extends SkyNode {
         }
     }
 
-    public step(deltaTime: number) {
+    public step(screen: Screen, deltaTime: number): void {
+        for (const child of this.children) { child.step(screen, deltaTime); }
+        for (const delay of this.delays) { delay.step(deltaTime); }
+        for (const interval of this.intervals) { interval.step(deltaTime); }
     }
 
-    public onMeet(TargetType: { new(): any }, callback: () => void) {
+    public onMeet(targets: GameNode[], callback: () => void) {
     }
 
     public appendTo(node: GameNode, index?: number): this {
@@ -169,6 +186,8 @@ export default class GameNode extends SkyNode {
 
     public delete(): void {
         this.pixiContainer.destroy();
+        (this.delays as unknown) = undefined;
+        (this.intervals as unknown) = undefined;
         super.delete();
     }
 }

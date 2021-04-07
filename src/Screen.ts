@@ -55,7 +55,7 @@ export default class Screen extends DomNode<HTMLDivElement> {
     }
 
     private step(deltaTime: number) {
-        this.root.step(deltaTime);
+        this.root.step(this, deltaTime);
 
         // root to center of screen
         this.root.x = this.width / 2 - this.camera.x;

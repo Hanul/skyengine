@@ -9,6 +9,5 @@ export default class Image extends GameNode {
     constructor(options: ImageOptions);
     private changeImage;
     set src(src: string);
-    delete(): void;
 }
 //# sourceMappingURL=Image.d.ts.map

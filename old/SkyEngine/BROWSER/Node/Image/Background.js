@@ -46,12 +46,6 @@ SkyEngine.Background = CLASS({
 		
 		let draw = () => {
 			
-			let xs = leftMargin + width + rightMargin;
-			let ys = topMargin + height + bottomMargin;
-			
-			let realScaleX = SkyEngine.Screen.getRealScaleX() * self.getRealScaleX();
-			let realScaleY = SkyEngine.Screen.getRealScaleY() * self.getRealScaleY();
-			
 			let screenX = (SkyEngine.Screen.getCameraFollowX() - SkyEngine.Screen.getX() - SkyEngine.Screen.getStageX()) / realScaleX;
 			let screenY = (SkyEngine.Screen.getCameraFollowY() - SkyEngine.Screen.getY() - SkyEngine.Screen.getStageY()) / realScaleY;
 			
@@ -367,25 +361,3 @@ SkyEngine.Background = CLASS({
 				}
 			};
 		});
-		
-		let remove;
-		OVERRIDE(self.remove, (origin) => {
-			
-			remove = self.remove = () => {
-				
-				pixiTilingSprite = undefined;
-				pixiSprites = undefined;
-				
-				origin();
-			};
-		});
-		
-		let getWidth = self.getWidth = () => {
-			return width;
-		};
-		
-		let getHeight = self.getHeight = () => {
-			return height;
-		};
-	}
-});

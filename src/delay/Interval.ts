@@ -16,13 +16,13 @@ export default class Interval {
     }
 
     public resume(): void {
-        if (this.screen.intervals.includes(this) !== true) {
-            this.screen.intervals.push(this);
+        if (this.node.intervals.includes(this) !== true) {
+            this.node.intervals.push(this);
         }
     }
 
     public pause(): void {
-        SkyUtil.pull(this.screen.intervals, this);
+        SkyUtil.pull(this.node.intervals, this);
     }
 
     public delete(): void {
@@ -34,7 +34,7 @@ export default class Interval {
         if (this.after >= this.ms) {
             this.after -= this.ms;
             this.count += 1;
-            if (this.callback(this) === false) {
+            if (this.callback() === false) {
                 this.delete();
             }
         }

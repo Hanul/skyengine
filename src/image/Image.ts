@@ -33,9 +33,4 @@ export default class Image extends GameNode {
     public set src(src: string) {
         this.changeImage(src);
     }
-
-    public delete(): void {
-        this.pixiSprite?.destroy();
-        super.delete();
-    }
 }

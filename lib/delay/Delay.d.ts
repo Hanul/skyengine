@@ -1,10 +1,10 @@
-import Screen from "../Screen";
+import GameNode from "../GameNode";
 export default class Delay {
-    private screen;
+    private node;
     private ms;
     private callback;
     private after;
-    constructor(screen: Screen, ms: number, callback: () => void);
+    constructor(node: GameNode, ms: number, callback: () => void);
     resume(): void;
     pause(): void;
     delete(): void;

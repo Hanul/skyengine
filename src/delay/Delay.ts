@@ -1,4 +1,5 @@
 import SkyUtil from "skyutil";
+import GameNode from "../GameNode";
 import Screen from "../Screen";
 
 export default class Delay {
@@ -6,7 +7,7 @@ export default class Delay {
     private after = 0;
 
     constructor(
-        private screen: Screen,
+        private node: GameNode,
         private ms: number,
         private callback: () => void,
     ) {
@@ -14,13 +15,13 @@ export default class Delay {
     }
 
     public resume(): void {
-        if (this.screen.delays.includes(this) !== true) {
-            this.screen.delays.push(this);
+        if (this.node.delays.includes(this) !== true) {
+            this.node.delays.push(this);
         }
     }
 
     public pause(): void {
-        SkyUtil.pull(this.screen.delays, this);
+        SkyUtil.pull(this.node.delays, this);
     }
 
     public delete(): void {
