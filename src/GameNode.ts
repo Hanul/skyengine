@@ -177,13 +177,6 @@ export default class GameNode extends SkyNode {
         return super.appendTo(node, index);
     }
 
-    public exceptFromParent(): this {
-        if (this.parent !== undefined) {
-            this.parent.pixiContainer.removeChild(this.pixiContainer);
-        }
-        return super.exceptFromParent();
-    }
-
     public delete(): void {
         this.pixiContainer.destroy();
         (this.delays as unknown) = undefined;
