@@ -70,7 +70,7 @@ export default class GameNode extends SkyNode {
     step(screen: Screen, deltaTime: number): void;
     onMeet(targets: GameNode[], callback: () => void): void;
     appendTo(node: GameNode, index?: number): this;
-    exceptFromParent(): void;
+    exceptFromParent(): this;
     delete(): void;
 }
 //# sourceMappingURL=GameNode.d.ts.map
