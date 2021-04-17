@@ -1,6 +1,5 @@
 import SkyUtil from "skyutil";
 import GameNode from "../GameNode";
-import Screen from "../Screen";
 
 export default class Delay {
 
