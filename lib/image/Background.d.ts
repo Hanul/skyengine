@@ -1,5 +1,4 @@
 import Fixed, { FixedOptions } from "../Fixed";
-import Screen from "../Screen";
 export interface BackgroundOptions extends FixedOptions {
     src: string;
     repeatX?: boolean;
@@ -23,7 +22,7 @@ export default class Background extends Fixed {
     private changeImage;
     set src(src: string);
     private draw;
-    step(screen: Screen, deltaTime: number): void;
+    step(deltaTime: number): void;
     delete(): void;
 }
 //# sourceMappingURL=Background.d.ts.map

@@ -1,5 +1,4 @@
 import { DomNode, el } from "@hanul/skynode";
-import * as PIXI from "pixi.js";
 import Camera from "./Camera";
 import GameNode from "./GameNode";
 
@@ -11,7 +10,7 @@ export interface ScreenOptions {
 
 export default class Screen extends DomNode<HTMLDivElement> {
 
-    private static readonly WINDOW_BLUR_FPS = 1;
+    private static readonly FPS_WINDOW_BLURRED = 1;
 
     private animationInterval: number | undefined;
     private beforeTime = 0;
@@ -20,7 +19,7 @@ export default class Screen extends DomNode<HTMLDivElement> {
     private originFPS: number | undefined;
 
     protected canvas: DomNode<HTMLCanvasElement>;
-    protected renderer: PIXI.Renderer;
+    private renderer: PIXI.Renderer;
     public root = new GameNode({ x: 0, y: 0 });
     private camera = new Camera();
 
@@ -55,7 +54,7 @@ export default class Screen extends DomNode<HTMLDivElement> {
     }
 
     private step(deltaTime: number) {
-        this.root.step(this, deltaTime);
+        this.root.step(deltaTime);
 
         // root to center of screen
         this.root.x = this.width / 2 - this.camera.x;
@@ -66,7 +65,7 @@ export default class Screen extends DomNode<HTMLDivElement> {
 
     private windowBlurHandler = () => {
         this.originFPS = this.fps;
-        this.fps = Screen.WINDOW_BLUR_FPS;
+        this.fps = Screen.FPS_WINDOW_BLURRED;
     };
 
     private windowFocusHandler = () => {

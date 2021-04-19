@@ -1,6 +1,5 @@
 import Fixed, { FixedOptions } from "../Fixed";
 import loadTexture from "../loadTexture";
-import Screen from "../Screen";
 
 export interface BackgroundOptions extends FixedOptions {
     src: string;
@@ -52,17 +51,17 @@ export default class Background extends Fixed {
         this.changeImage(src);
     }
 
-    private draw(screen: Screen) {
+    private draw() {
         let xs = this.gapLeft + this.width + this.gapRight;
         let ys = this.gapTop + this.height + this.gapBottom;
 
     }
 
-    public step(screen: Screen, deltaTime: number): void {
-        super.step(screen, deltaTime);
+    public step(deltaTime: number): void {
+        super.step(deltaTime);
         if (this.pixiTilingSprite !== undefined) {
         } else {
-            this.draw(screen);
+            this.draw();
         }
     }
 

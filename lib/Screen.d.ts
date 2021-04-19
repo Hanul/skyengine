@@ -1,5 +1,4 @@
 import { DomNode } from "@hanul/skynode";
-import * as PIXI from "pixi.js";
 import GameNode from "./GameNode";
 export interface ScreenOptions {
     fps?: number;
@@ -7,14 +6,14 @@ export interface ScreenOptions {
     height: number;
 }
 export default class Screen extends DomNode<HTMLDivElement> {
-    private static readonly WINDOW_BLUR_FPS;
+    private static readonly FPS_WINDOW_BLURRED;
     private animationInterval;
     private beforeTime;
     private timeSigma;
     private fps;
     private originFPS;
     protected canvas: DomNode<HTMLCanvasElement>;
-    protected renderer: PIXI.Renderer;
+    private renderer;
     root: GameNode;
     private camera;
     width: number;

@@ -1,4 +1,5 @@
 import { DomNode, SkyNode } from "@hanul/skynode";
+import PIXI from "pixi.js";
 import Area from "./area/Area";
 import Delay from "./delay/Delay";
 import Interval from "./delay/Interval";
@@ -65,7 +66,7 @@ export default class GameNode extends SkyNode {
     worldRadian: number;
     worldSin: number;
     worldCos: number;
-    private pixiContainer;
+    pixiContainer: PIXI.Container;
     set x(x: number);
     get x(): number;
     set y(y: number);
@@ -110,7 +111,7 @@ export default class GameNode extends SkyNode {
     fadingAccel: number;
     minFadingSpeed: number | undefined;
     maxFadingSpeed: number | undefined;
-    constructor(options: GameNodeOptions);
+    constructor(options?: GameNodeOptions);
     step(deltaTime: number): void;
     appendTo(node: GameNode, index?: number): this;
     delete(): void;
