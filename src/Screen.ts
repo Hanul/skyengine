@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import Camera from "./Camera";
 import GameNode from "./GameNode";
+import * as PIXI from "pixi.js";
 
 export interface ScreenOptions {
     fps?: number;

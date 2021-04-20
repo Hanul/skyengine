@@ -1,5 +1,6 @@
 import Fixed, { FixedOptions } from "../Fixed";
 import loadTexture from "../loadTexture";
+import * as PIXI from "pixi.js";
 
 export interface BackgroundOptions extends FixedOptions {
     src: string;

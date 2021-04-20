@@ -1,5 +1,5 @@
 import { DomNode, SkyNode } from "@hanul/skynode";
-import PIXI from "pixi.js";
+import * as PIXI from "pixi.js";
 import Area from "./area/Area";
 import Delay from "./delay/Delay";
 import Interval from "./delay/Interval";
@@ -113,9 +113,6 @@ export default class GameNode extends SkyNode {
     maxFadingSpeed: number | undefined;
     constructor(options?: GameNodeOptions);
     step(deltaTime: number): void;
-    appendTo(node: GameNode, index?: number): this;
-    delete(): void;
-    onMeet(targets: GameNode[], callback: () => void): void;
     moveLeft(options: {
         speed: number;
         accel?: number;
@@ -144,5 +141,8 @@ export default class GameNode extends SkyNode {
         toY?: number;
     }, moveEndHandler?: () => void): void;
     stopDown(accel?: number): void;
+    onMeet(targets: GameNode[], callback: () => void): void;
+    appendTo(node: GameNode, index?: number): this;
+    delete(): void;
 }
 //# sourceMappingURL=GameNode.d.ts.map

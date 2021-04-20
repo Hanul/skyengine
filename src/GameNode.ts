@@ -1,5 +1,5 @@
 import { DomNode, SkyNode } from "@hanul/skynode";
-import PIXI from "pixi.js";
+import * as PIXI from "pixi.js";
 import Area from "./area/Area";
 import Delay from "./delay/Delay";
 import Interval from "./delay/Interval";
@@ -116,8 +116,8 @@ export default class GameNode extends SkyNode {
     }
 
     public step(deltaTime: number): void {
-        if (this.parent !== undefined) {
 
+        if (this.parent !== undefined) {
             this.worldRadian = this.parent.worldRadian + this.angle * Math.PI / 180;
             this.worldSin = Math.sin(this.worldRadian);
             this.worldCos = Math.cos(this.worldRadian);
@@ -131,31 +131,11 @@ export default class GameNode extends SkyNode {
             const relativeCenterY = this.centerY * this.worldScaleY;
             this.drawingX = this.worldX - relativeCenterX * this.worldCos + relativeCenterY * this.worldSin;
             this.drawingY = this.worldY - relativeCenterX * this.worldSin - relativeCenterY * this.worldCos;
-
-            for (const child of this.children) { child.step(deltaTime); }
-            for (const delay of this.delays) { delay.step(deltaTime); }
-            for (const interval of this.intervals) { interval.step(deltaTime); }
         }
-    }
 
-    public appendTo(node: GameNode, index?: number): this {
-        if (index !== undefined && index < node.children.length) {
-            node.pixiContainer.addChildAt(this.pixiContainer, index);
-        } else {
-            node.pixiContainer.addChild(this.pixiContainer);
-        }
-        return super.appendTo(node, index);
-    }
-
-    public delete(): void {
-        this.pixiContainer.destroy();
-        (this.delays as unknown) = undefined;
-        (this.intervals as unknown) = undefined;
-        super.delete();
-    }
-
-    public onMeet(targets: GameNode[], callback: () => void) {
-        //TODO:
+        for (const child of this.children) { child.step(deltaTime); }
+        for (const delay of this.delays) { delay.step(deltaTime); }
+        for (const interval of this.intervals) { interval.step(deltaTime); }
     }
 
     public moveLeft(options: {
@@ -260,5 +240,25 @@ export default class GameNode extends SkyNode {
             if (this.accelY > 0) { this.accelY = 0; }
             this.speedY = 0;
         }
+    }
+
+    public onMeet(targets: GameNode[], callback: () => void) {
+        //TODO:
+    }
+
+    public appendTo(node: GameNode, index?: number): this {
+        if (index !== undefined && index < node.children.length) {
+            node.pixiContainer.addChildAt(this.pixiContainer, index);
+        } else {
+            node.pixiContainer.addChild(this.pixiContainer);
+        }
+        return super.appendTo(node, index);
+    }
+
+    public delete(): void {
+        this.pixiContainer.destroy();
+        (this.delays as unknown) = undefined;
+        (this.intervals as unknown) = undefined;
+        super.delete();
     }
 }

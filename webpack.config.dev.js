@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        'draw-test': './test-src/draw-test.ts',
         'image-test': './test-src/image-test.ts',
+        'sprite-test': './test-src/sprite-test.ts',
         'dom-test': './test-src/dom-test.ts',
         'moving-test': './test-src/moving-test.ts',
         'scaling-test': './test-src/scaling-test.ts',
