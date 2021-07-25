@@ -1,0 +1,1 @@
+{"version":3,"file":"Joystick.d.ts","sourceRoot":"","sources":["../../src/Joystick.ts"],"names":[],"mappings":"AAAA,OAAO,EAAY,OAAO,EAAE,MAAM,gBAAgB,CAAC;AAEnD,oBAAY,YAAY;IACpB,cAAc,IAAA;CACjB;AAED,MAAM,CAAC,OAAO,OAAO,QAAS,SAAQ,OAAO,CAAC,cAAc,CAAC;gBAE7C,IAAI,EAAE,YAAY;CAUjC"}

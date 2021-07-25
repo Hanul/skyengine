@@ -9,6 +9,7 @@ export { default as Rect } from "./area/Rect";
 export { default as Image, ImageOptions } from "./image/Image";
 export { default as Sprite, SpriteOptions } from "./image/Sprite";
 export { default as Background, BackgroundOptions } from "./image/Background";
+export { default as Spine, SpineOptions } from "./image/Spine";
 export { default as Sound } from "./sound/Sound";
 export { default as BGM } from "./sound/BGM";
 export { default as StateSet } from "./StateSet";

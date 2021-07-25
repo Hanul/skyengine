@@ -24,6 +24,7 @@ module.exports = {
         'particle-test': './test-src/particle-test.ts',
         'subscreen-test': './test-src/subscreen-test.ts',
         'sound-test': './test-src/sound-test.ts',
+        'spine-test': './test-src/spine-test.ts',
     },
     module: {
         rules: [

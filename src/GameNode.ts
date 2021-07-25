@@ -11,6 +11,7 @@ export interface GameNodeOptions {
     centerY?: number;
     scaleX?: number;
     scaleY?: number;
+    scale?: number;
     angle?: number;
 
     speedX?: number; toX?: number;
@@ -66,6 +67,7 @@ export default class GameNode extends SkyNode {
     public get scaleX(): number { return this._scaleX; }
     public set scaleY(scaleY: number) { this.pixiContainer.scale.y = this._scaleY = scaleY; }
     public get scaleY(): number { return this._scaleY; }
+    public set scale(scale: number) { this.scaleX = scale; this.scaleY = scale; }
     public set centerX(centerX: number) { this.pixiContainer.pivot.x = this._centerX = centerX; }
     public get centerX(): number { return this._centerX; }
     public set centerY(centerY: number) { this.pixiContainer.pivot.y = this._centerY = centerY; }
@@ -94,6 +96,7 @@ export default class GameNode extends SkyNode {
         if (options?.y !== undefined) { this.y = options.y; }
         if (options?.centerX !== undefined) { this.centerX = options.centerX; }
         if (options?.centerY !== undefined) { this.centerY = options.centerY; }
+        if (options?.scale !== undefined) { this.scale = options.scale; }
         if (options?.scaleX !== undefined) { this.scaleX = options.scaleX; }
         if (options?.scaleY !== undefined) { this.scaleY = options.scaleY; }
         if (options?.angle !== undefined) { this.angle = options.angle; }

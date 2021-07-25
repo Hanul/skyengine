@@ -1,0 +1,1 @@
+{"version":3,"file":"Sound.d.ts","sourceRoot":"","sources":["../../../old/ts/Sound.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,OAAO,KAAK;IAEtB,OAAO,CAAC,MAAM,CAAC,QAAQ,CAAC,YAAY,CAAsB;IAC1D,OAAO,CAAC,MAAM,CAAC,QAAQ,CAAC,WAAW,CAA+C;IAElF,OAAO,CAAC,MAAM,CAAC,WAAW,CAAsC;mBAE3C,UAAU;;CAuBlC"}

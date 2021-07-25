@@ -1,0 +1,216 @@
+
+Akina.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+barm
+  rotate: true
+  xy: 258, 13
+  size: 55, 157
+  orig: 55, 157
+  offset: 0, 0
+  index: -1
+bcalf
+  rotate: false
+  xy: 598, 31
+  size: 53, 104
+  orig: 53, 104
+  offset: 0, 0
+  index: -1
+bhair
+  rotate: false
+  xy: 101, 283
+  size: 71, 229
+  orig: 71, 229
+  offset: 0, 0
+  index: -1
+bleg
+  rotate: false
+  xy: 538, 197
+  size: 51, 110
+  orig: 51, 110
+  offset: 0, 0
+  index: -1
+breast
+  rotate: false
+  xy: 172, 306
+  size: 126, 206
+  orig: 126, 206
+  offset: 0, 0
+  index: -1
+bshair
+  rotate: true
+  xy: 101, 28
+  size: 40, 157
+  orig: 40, 157
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 492, 190
+  size: 116, 46
+  orig: 116, 46
+  offset: 0, 0
+  index: -1
+eye2
+  rotate: false
+  xy: 298, 307
+  size: 109, 34
+  orig: 109, 34
+  offset: 0, 0
+  index: -1
+eye3
+  rotate: false
+  xy: 44, 12
+  size: 109, 14
+  orig: 109, 14
+  offset: 0, 0
+  index: -1
+eye4
+  rotate: false
+  xy: 497, 307
+  size: 107, 39
+  orig: 107, 39
+  offset: 0, 0
+  index: -1
+eyebrow
+  rotate: false
+  xy: 7, 0
+  size: 105, 7
+  orig: 105, 7
+  offset: 0, 0
+  index: -1
+eyeo
+  rotate: false
+  xy: 407, 306
+  size: 90, 38
+  orig: 90, 38
+  offset: 0, 0
+  index: -1
+eyevv
+  rotate: false
+  xy: 604, 315
+  size: 97, 31
+  orig: 97, 31
+  offset: 0, 0
+  index: -1
+face
+  rotate: false
+  xy: 447, 346
+  size: 163, 166
+  orig: 163, 166
+  offset: 0, 0
+  index: -1
+farm
+  rotate: true
+  xy: 277, 68
+  size: 54, 160
+  orig: 54, 160
+  offset: 0, 0
+  index: -1
+fcalf
+  rotate: false
+  xy: 589, 201
+  size: 49, 106
+  orig: 49, 106
+  offset: 0, 0
+  index: -1
+fhair
+  rotate: false
+  xy: 437, 6
+  size: 161, 116
+  orig: 161, 116
+  offset: 0, 0
+  index: -1
+fleg
+  rotate: true
+  xy: 492, 135
+  size: 55, 107
+  orig: 55, 107
+  offset: 0, 0
+  index: -1
+fshair
+  rotate: false
+  xy: 456, 144
+  size: 36, 162
+  orig: 36, 162
+  offset: 0, 0
+  index: -1
+hair
+  rotate: true
+  xy: 277, 122
+  size: 184, 179
+  orig: 184, 179
+  offset: 0, 0
+  index: -1
+headacce
+  rotate: true
+  xy: 349, 344
+  size: 168, 98
+  orig: 168, 98
+  offset: 0, 0
+  index: -1
+headacce2
+  rotate: true
+  xy: 298, 341
+  size: 171, 51
+  orig: 171, 51
+  offset: 0, 0
+  index: -1
+hip
+  rotate: true
+  xy: 610, 439
+  size: 73, 69
+  orig: 73, 69
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 0, 6
+  size: 20, 7
+  orig: 20, 7
+  offset: 0, 0
+  index: -1
+mouthS
+  rotate: true
+  xy: 23, 7
+  size: 19, 8
+  orig: 19, 8
+  offset: 0, 0
+  index: -1
+mouthangry
+  rotate: true
+  xy: 31, 10
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+moutho
+  rotate: true
+  xy: 112, 1
+  size: 11, 8
+  orig: 11, 8
+  offset: 0, 0
+  index: -1
+mouthsmile
+  rotate: true
+  xy: 7, 7
+  size: 19, 16
+  orig: 19, 16
+  offset: 0, 0
+  index: -1
+skirt
+  rotate: true
+  xy: 101, 68
+  size: 215, 176
+  orig: 215, 176
+  offset: 0, 0
+  index: -1
+weapon
+  rotate: true
+  xy: 0, 26
+  size: 486, 101
+  orig: 486, 101
+  offset: 0, 0
+  index: -1

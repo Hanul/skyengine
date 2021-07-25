@@ -1,0 +1,1 @@
+{"version":3,"file":"sprite-test.js","sourceRoot":"","sources":["../../test-src/sprite-test.ts"],"names":[],"mappings":";;AAAA,kDAA2C;AAC3C,gDAAyC;AAEzC,MAAM,MAAM,GAAG,IAAI,oBAAU,EAAE,CAAC;AAChC,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,IAAI,gBAAM,CAAC;IAC1B,GAAG,EAAE,YAAY;IACjB,UAAU,EAAE,EAAE;IACd,UAAU,EAAE,GAAG;IACf,WAAW,EAAE,GAAG;IAChB,GAAG,EAAE,EAAE;CACV,CAAC,CAAC,CAAC"}

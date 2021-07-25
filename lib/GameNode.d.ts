@@ -10,6 +10,7 @@ export interface GameNodeOptions {
     centerY?: number;
     scaleX?: number;
     scaleY?: number;
+    scale?: number;
     angle?: number;
     speedX?: number;
     toX?: number;
@@ -75,6 +76,7 @@ export default class GameNode extends SkyNode {
     get scaleX(): number;
     set scaleY(scaleY: number);
     get scaleY(): number;
+    set scale(scale: number);
     set centerX(centerX: number);
     get centerX(): number;
     set centerY(centerY: number);
