@@ -28,6 +28,7 @@ export default class Sound {
             }
         }
     }
+
     private static async loadBuffer(src: string): Promise<AudioBuffer> {
         if (Sound.buffers[src] !== undefined) {
             return Sound.buffers[src];
